@@ -1,9 +1,9 @@
 # DOS211_JAP
  MS-DOS 2.11 Japanese
 
-# notes
+# NOTES
 
-* There is no Japanese version of EDLIN.
+* There is no Japanese version of DEBUG.
 * MSDOS.SYS is under construction.
 
 We have to change STRIN, IO2 and DISK to use in Japanese environment.

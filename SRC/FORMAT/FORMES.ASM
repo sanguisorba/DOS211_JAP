@@ -30,6 +30,19 @@ WAITYN:
         MOV     AX,(STD_CON_INPUT_FLUSH SHL 8) OR STD_CON_INPUT
                                         ;Flush buffer and wait for keystroke
         INT     21H                     ;Input character now a Y or N
+        CMP     AL,81H
+        JB      NOK
+        CMP     AL,0A0H
+        JB      ISK
+        CMP     AL,0E0H
+        JB      NOK
+        CMP     AL,0FDH
+        JB      ISK
+ISK:
+        MOV     AH,STD_CON_INPUT
+        INT     21H
+        JMP     WAITYN
+NOK:
         AND     AL,0DFH                 ;So lower case works too
         CMP     AL,"Y"
         JZ      WAIT20

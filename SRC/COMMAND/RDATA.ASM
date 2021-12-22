@@ -86,14 +86,12 @@ ERR9    DB      "用紙切れです$"
 ERR10   DB      "書込めません$"
 ERR11   DB      "読取れません$"
 ERR12   DB      "ディスクエラーです$"
-
-
 MREAD   DB      "読取り中$"
 MWRITE  DB      "書込み中$"
 ERRMES  DB      " "
 DRVNUM  DB      "ドライブ "
 DRVLET  DB      "A: $"
-IOTYP  label   byte
+IOTYP  label   byte           ;obsoleted
 NEWLIN  DB      13,10,"$"
 DEVEMES DB      " デバイス "
 DEVENAM DB      8 DUP (?)
@@ -107,7 +105,6 @@ EMORY$7 DB      "メモリ$"
 BAT$8   DB      " バッチ$"
 INS$9   DB      "差し込み，$"
 REQUEST DB      "中止<A>, もう一度<R>, 無視<I>? $"
-
 CDEVAT  DB      ?
 BADFAT  DB      "0ファイル3テーブルが不良です$"
 COMBAD  DB      "01.COMのバージョンが不正です"
@@ -116,7 +113,7 @@ DRVMSG  DB      "ドライブ "
 COMLET  DB      "A に9$"
 DEFMSG  DB      "デフォルトドライブに9$"
 PROMPT  DB      "0どれかキーを押してください0$"
-ENDBATMES DB    "08処理を中止しますか(Y/N)?"," "+80h
+ENDBATMES DB    "08処理を中止しますか(Y/N)?$"
 EXECEMES DB     "実行できませんでした0$"
 EXEBAD  DB      ".EXE 4の5です0$"
 TOOBIG  DB      "プログラムが大きすぎて7に入り60$"
@@ -205,7 +202,9 @@ TRANVARS LABEL  BYTE            ; Variables passed to transient
         DW      OFFSET RESGROUP:THEADFIX
 MYSEG   DW      0               ; Put our own segment here
 LTPA    DW      0               ; WILL STORE TPA SEGMENT HERE
-RSWITCHAR DB    "-"
+
+; SWITCHAR & DIRCHAR are taken from the original command.com
+RSWITCHAR DB    "/"
 RDIRCHAR DB     "\"
         DW      OFFSET RESGROUP:EXT_EXEC
 MYSEG1  DW      ?

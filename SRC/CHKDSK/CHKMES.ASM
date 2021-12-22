@@ -138,6 +138,20 @@ PAGAIN:
         MOV     DX,OFFSET DG:CONBUF
         MOV     AH,STD_CON_STRING_INPUT
         INT     21H
+        CMP     AL,81H
+        JB      NOK2
+        CMP     AL,0A0H
+        JB      ISK2
+        CMP     AL,0E0H
+        JB      NOK2
+        CMP     AL,0FDH
+        JB      ISK2
+ISK2:
+        MOV     AH,STD_CON_INPUT
+        INT     21H
+        CALL    DOCRLF
+        JMP     ASK
+NOK2:
         CALL    DOCRLF
         MOV     SI,OFFSET DG:CONBUF+2
         CMP     BYTE PTR [SI-1],0

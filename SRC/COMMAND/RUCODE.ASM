@@ -120,8 +120,7 @@ NOHARDE:
         JZ      SAVMES
         MOV     SI,OFFSET RESGROUP:MWRITE
 SAVMES:
-; IOTYP is obsoleted in JAP ver.
-;        LODSW
+;        LODSW ; IOTYP is obsoleted in JAP ver.
 ;        MOV     WORD PTR [IOTYP],AX
 ;        LODSW
 ;        MOV     WORD PTR [IOTYP+2],AX
@@ -152,9 +151,6 @@ BLKERR:
         CALL    RESTHAND
         JMP     GETCOMDSK2      ; If error loading COMMAND, re-prompt
 ASK:
-        MOV     DX,SI
-        CALL    RPRINT
-ASK2:
         MOV     DX,OFFSET RESGROUP:REQUEST
         CALL    RPRINT
         MOV     AX,(STD_CON_INPUT_FLUSH SHL 8)+STD_CON_INPUT
@@ -183,7 +179,7 @@ NOK2:
         JZ      EEXIT
         INC     AH
         CMP     AL,"a"          ; Abort?
-        JNZ     ASK2
+        JNZ     ASK
         XOR     DX,DX
         XCHG    DL,[PIPEFLAG]   ; Abort a pipe in progress
         OR      DL,DL
@@ -236,10 +232,9 @@ RPRINT:
         MOV     SI,DX
 RPRINT1:
         LODSB
+        PUSH    AX
         CMP     AL,"$"
         JZ      RPRINT4
-        PUSH    AX
-;        AND     AL,7FH           ; Obsoleted
         CMP     AL,"0"
         JB      RPRINT2
         CMP     AL,"9"
@@ -258,7 +253,6 @@ RPRINT2:
         INT     int_command
 RPRINT3:
         POP     AX
-;        TEST    AL,10000000B                    ; High bit set indicates end
         JMP      RPRINT1
 RPRINT4:
         POP     SI

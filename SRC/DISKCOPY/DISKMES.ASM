@@ -46,6 +46,20 @@ PAGAIN:
         CALL    PRINT
         MOV     AX,(STD_CON_INPUT_FLUSH SHL 8)+STD_CON_INPUT
         INT     21H
+        CMP     AL,81H
+        JB      NOK
+        CMP     AL,0A0H
+        JB      ISK
+        CMP     AL,0E0H
+        JB      NOK
+        CMP     AL,0FDH
+        JB      ISK
+ISK:
+        MOV     AH,STD_CON_INPUT
+        INT     21H
+        CALL    PCRLF
+        JMP     PAGAIN
+NOK:
         PUSH    AX
         CALL    PCRLF
         POP     AX
@@ -222,18 +236,18 @@ ASK:
         MOV     AX,(STD_CON_INPUT_FLUSH SHL 8)+STD_CON_INPUT
         INT     21H             ; Get response
         CMP     AL,81H
-        JB      NOK
+        JB      NOK2
         CMP     AL,0A0H
-        JB      ISK
+        JB      ISK2
         CMP     AL,0E0H
-        JB      NOK
+        JB      NOK2
         CMP     AL,0FDH
-        JB      ISK
-ISK:
+        JB      ISK2
+ISK2:
         MOV     AH,STD_CON_INPUT
         INT     21H
         JMP     ASK
-NOK:
+NOK2:
         OR      AL,20H          ; Convert to lower case
         PUSH    AX
         CALL    PCRLF

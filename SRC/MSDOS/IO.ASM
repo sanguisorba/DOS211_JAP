@@ -27,6 +27,9 @@ INCLUDE DEVSYM.ASM
 .cref
 .list
 
+; According to the original MSDOS.SYS, there is no function table.
+; Perhaps this feature does not exist in Japanese models.
+
 	procedure	$STD_CON_INPUT, NEAR
 	call	$STD_CON_INPUT_NO_ECHO
 	push	ax

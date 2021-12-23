@@ -45,6 +45,7 @@ $STD_CON_INPUT	endp
 	jc	out_controlch
 	cmp	al, c_DEL	;DEL does not increase CARPOS
 	jz	out_notprint
+	entry	OUTCARPO	;called from STRIN
 	inc	ss:CARPOS
 out_notprint:
 	push	ds

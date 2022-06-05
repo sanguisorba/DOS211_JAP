@@ -60,11 +60,11 @@ COPIED_POST  DB      " 個のファイルをコピーしました",13,10
 COPIED_PRE   DB      "$"
 
 ;"DIRMES_PRE<# files in dir>DIRMES_POST"
-DIRMES_POST  DB      " 個 : ファイル"
+DIRMES_POST  DB      " 個のファイル",13,10
 DIRMES_PRE   DB      "$"
 
 ;"BYTMES_PRE<# free bytes>BYTMES_POST"
-BYTMES_POST  DB      " バイト : 使用可能容量",13,10
+BYTMES_POST  DB      " バイトの使用可能容量",13,10
 BYTMES_PRE   DB      "$"
 
 BADDRV  DB      "無効なドライブ指定です",13,10,"$"

@@ -3,21 +3,22 @@ SYSINITSEG      SEGMENT PUBLIC BYTE 'SYSTEM_INIT'
         PUBLIC  BADOPM,CRLFM,BADSIZ_PRE,BADLD_PRE,BADCOM,SYSSIZE
         PUBLIC  BADSIZ_POST,BADLD_POST,BADCOUNTRY
 
-BADOPM  DB      13,10,"CONFIG.SYS ã«ç„¡åŠ¹ãªã‚³ãƒžãƒ³ãƒ‰ã‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã™"
+BADOPM  DB      13,10,"CONFIG.SYS ‚É–³Œø‚ÈƒRƒ}ƒ“ƒh‚©ƒpƒ‰ƒ[ƒ^‚ª‚ ‚è‚Ü‚·"
 BADSIZ_PRE   LABEL   BYTE
 BADLD_PRE   LABEL   BYTE
 CRLFM   DB      13,10,'$'
 
-BADSIZ_POST  DB      13,10,"ãƒ‡ãƒã‚¤ã‚¹ãƒ‰ãƒ©ã‚¤ãƒã§æŒ‡å®šã•ã‚ŒãŸã‚»ã‚¯ã‚¿ã‚µã‚¤ã‚ºã¯å¤§ãã™ãŽã¾ã™"
+BADSIZ_POST  DB      13,10,"ƒfƒoƒCƒXƒhƒ‰ƒCƒo‚ÅŽw’è‚³‚ê‚½ƒZƒNƒ^ƒTƒCƒY‚Í‘å‚«‚·‚¬‚Ü‚·"
 
-BADLD_POST   DB      13,10," ãŒç„¡åŠ¹ã¾ãŸã¯è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“"
+BADLD_POST   DB      13,10," ‚ª–³Œø‚Ü‚½‚ÍŒ©‚Â‚©‚è‚Ü‚¹‚ñ"
 
-BADCOM  DB      "ã‚³ãƒžãƒ³ãƒ‰ã‚¤ãƒ³ã‚¿ãƒ—ãƒªãƒ³ã‚¿",0
+BADCOM  DB      "ƒRƒ}ƒ“ƒhƒCƒ“ƒ^ƒvƒŠƒ“ƒ^",0
 
-BADCOUNTRY DB   "ç„¡åŠ¹ãªã‚«ãƒ³ãƒˆãƒªãƒ¼ã‚³ãƒ¼ãƒ‰ã§ã™",13,10,'$'
+BADCOUNTRY DB   "–³Œø‚ÈƒJƒ“ƒgƒŠ[ƒR[ƒh‚Å‚·",13,10,'$'
 
 SYSSIZE LABEL   BYTE
 
 SYSINITSEG      ENDS
         END
-                                                                                                        
+                                                                                                
+        

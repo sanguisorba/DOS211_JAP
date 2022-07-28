@@ -10,7 +10,7 @@ INIT    SEGMENT PUBLIC BYTE
 
         PUBLIC  HEADER
         IF      NOT IBM
-HEADER  DB      13,10,"Command v. 2.11"
+HEADER  DB      13,10,"Command ÊÞ°¼Þ®Ý 2.11"
         IF      HIGHMEM
         DB      "H"
         ENDIF
